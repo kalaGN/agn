@@ -3,7 +3,7 @@ package interfacett
 
 import (
 	"agn/app/http/controllers/api/external"
-	dial_record "agn/app/models/bd_dial_record"
+	"agn/app/models/dial_record"
 	"fmt"
 	"net/http"
 
@@ -38,7 +38,7 @@ func (sc *InterfacettController) IsDataExist(c *gin.Context) {
 
 	//  检查数据库并返回响应
 	c.JSON(http.StatusOK, gin.H{
-		"code": 1,
+		"code": 0,
 		"msg":  "",
 		"data": dial_record.IsDataExist(request.Enterprise_id),
 	})
