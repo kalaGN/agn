@@ -33,7 +33,7 @@ type Bd_dial_Record struct {
 	Enterprise_id string `gorm:"type:int(11)"`
 	Manager_id    string `gorm:"type:varchar(64)"`
 	Task_identify string `gorm:"type:varchar(64)"`
-	Phone_id      string `gorm:"type:int(11)"`
+	Phone_id      string `gorm:"type:int(11);index:calledid_index"`
 	Phoneno       string `gorm:"type:varchar(64)"`
 	Dialresult    string `gorm:"type:int(11);unsigned`
 	Desire        string `gorm:"type:varchar(64)"`

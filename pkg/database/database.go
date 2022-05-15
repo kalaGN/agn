@@ -7,6 +7,7 @@ import (
 
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 )
 
 // DB 对象
@@ -20,6 +21,10 @@ func Connect(dbConfig gorm.Dialector, _logger gormlogger.Interface) {
 	var err error
 	DB, err = gorm.Open(dbConfig, &gorm.Config{
 		Logger: _logger,
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true, // 使用单数表名
+			//NoLowerCase:   true, // skip the snake_casing of names
+		},
 	})
 	// 处理错误
 	if err != nil {

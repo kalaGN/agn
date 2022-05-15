@@ -1,7 +1,7 @@
 package bootstrap
 
 import (
-	dial_record "agn/app/models/dial_record"
+	"agn/app/models/dial_record"
 	"agn/app/models/user"
 	"agn/pkg/config"
 	"agn/pkg/database"
