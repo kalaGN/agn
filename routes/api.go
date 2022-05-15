@@ -2,6 +2,7 @@
 package routes
 
 import (
+	interfacett "agn/app/http/controllers/api/external/interface"
 	"agn/app/http/controllers/api/v1/auth"
 
 	"github.com/gin-gonic/gin"
@@ -19,5 +20,14 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			// 判断手机是否已注册
 			authGroup.POST("/signup/phone/exist", suc.IsPhoneExist)
 		}
+	}
+
+	// 测试一个 v1 的路由组，我们所有的 v1 版本的路由都将存放到这里
+	externalRouter := r.Group("/external")
+	{
+		suc := new(interfacett.InterfacettController)
+		// 判断手机是否已注册
+		externalRouter.POST("/interface/getdialrecord", suc.IsDataExist)
+
 	}
 }

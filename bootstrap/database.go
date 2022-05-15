@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	dial_record "agn/app/models/bd_dial_record"
 	"agn/app/models/user"
 	"agn/pkg/config"
 	"agn/pkg/database"
@@ -50,5 +51,8 @@ func SetupDB() {
 	// 设置每个链接的过期时间
 	database.SQLDB.SetConnMaxLifetime(time.Duration(config.GetInt("database.mysql.max_life_seconds")) * time.Second)
 
+	// 自动创建表
 	database.DB.AutoMigrate(&user.User{})
+	database.DB.AutoMigrate(&dial_record.Bd_dial_Record{})
+
 }
