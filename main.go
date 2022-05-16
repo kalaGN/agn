@@ -2,6 +2,7 @@ package main
 
 import (
 	"agn/app/cmd"
+	"agn/app/cmd/make"
 	"agn/bootstrap"
 	btsConig "agn/config"
 	"agn/pkg/config"
@@ -48,6 +49,7 @@ func main() {
 	rootCmd.AddCommand(
 		cmd.CmdServe,
 		cmd.CmdKey,
+		make.CmdMake,
 	)
 
 	// 配置默认运行 Web 服务
