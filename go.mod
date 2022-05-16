@@ -3,7 +3,9 @@ module agn
 go 1.18
 
 require (
+	github.com/gertd/go-pluralize v0.2.1
 	github.com/gin-gonic/gin v1.7.7
+	github.com/iancoleman/strcase v0.2.0
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
 	github.com/spf13/cast v1.5.0
 	github.com/spf13/cobra v1.4.0
