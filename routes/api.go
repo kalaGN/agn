@@ -27,7 +27,7 @@ func RegisterAPIRoutes(r *gin.Engine) {
 	{
 		suc := new(interfacett.InterfacettController)
 		// 判断手机是否已注册
-		externalRouter.POST("/interface/getdialrecord", suc.IsDataExist)
+		externalRouter.GET("/interface/getdialrecord", suc.IsDataExist)
 
 	}
 }

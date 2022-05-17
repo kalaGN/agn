@@ -4,8 +4,7 @@ package interfacett
 import (
 	"agn/app/http/controllers/api/external"
 	"agn/app/models/dial_record"
-	"fmt"
-	"net/http"
+	"agn/pkg/response"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,26 +19,26 @@ func (sc *InterfacettController) IsDataExist(c *gin.Context) {
 
 	// 初始化请求对象
 	// 请求对象
-	type PhoneExistRequest struct {
-		Enterprise_id string `json:"enterprise_id"`
-	}
-	request := PhoneExistRequest{}
-	// 解析 JSON 请求
-	if err := c.ShouldBindJSON(&request); err != nil {
-		// 解析失败，返回 422 状态码和错误信息
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"error": err.Error(),
-		})
-		// 打印错误信息
-		fmt.Println(err.Error())
-		// 出错了，中断请求
-		return
-	}
+	// type PhoneExistRequest struct {
+	// 	Enterprise_id string `form:"comp_id"`
+	// }
+	comp_id := c.Query("comp_id")
 
+	// 解析 JSON 请求
+	// if err := c.ShouldBindJSON(&request); err != nil {
+	// 	// 解析失败，返回 422 状态码和错误信息
+	// 	c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+	// 		"error": err.Error(),
+	// 	})
+	// 	// 打印错误信息
+	// 	fmt.Println(err.Error())
+	// 	// 出错了，中断请求
+	// 	return
+	// }
 	//  检查数据库并返回响应
-	c.JSON(http.StatusOK, gin.H{
+	response.JSON(c, gin.H{
 		"code": 0,
 		"msg":  "",
-		"data": dial_record.IsDataExist(request.Enterprise_id),
+		"data": dial_record.IsDataExist(comp_id),
 	})
 }
