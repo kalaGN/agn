@@ -28,6 +28,7 @@ func Success(c *gin.Context) {
 func Data(c *gin.Context, data interface{}) {
 	JSON(c, gin.H{
 		"code": "0",
+		"msg":  "",
 		"data": data,
 	})
 }

@@ -4,6 +4,7 @@ package routes
 import (
 	interfacett "agn/app/http/controllers/api/external/interface"
 	"agn/app/http/controllers/api/v1/auth"
+	"agn/app/http/middlewares"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,7 +28,7 @@ func RegisterAPIRoutes(r *gin.Engine) {
 	{
 		suc := new(interfacett.InterfacettController)
 		// 判断手机是否已注册
-		externalRouter.GET("/interface/getdialrecord", suc.IsDataExist)
+		externalRouter.GET("/interface/getdialrecord", middlewares.AuthCommon(), suc.IsDataExist)
 
 	}
 }
