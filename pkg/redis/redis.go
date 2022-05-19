@@ -18,6 +18,7 @@ type RedisClient struct {
 
 // once 确保全局的 Redis 对象只实例一次
 var once sync.Once
+var limitonce sync.Once
 
 // Redis 全局 Redis，使用 db 1
 var Redis *RedisClient
@@ -34,7 +35,8 @@ var Limitredis *RedisClient
 
 // ConnectRedis 连接 redis 数据库，设置全局的 Redis 对象
 func ConnecLimittRedis(address string, username string, password string, db int) {
-	once.Do(func() {
+	limitonce.Do(func() {
+		logger.Dump("aa")
 		Limitredis = NewClient(address, username, password, db)
 	})
 }

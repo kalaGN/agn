@@ -23,7 +23,8 @@ func (sc *InterfacettController) IsDataExist(c *gin.Context) {
 	// 	Enterprise_id string `form:"comp_id"ź
 	// }
 	comp_id := c.Query("comp_id")
-	// redis.Limitredis.Get("aaa")
+	// val := redis.Limitredis.Get("agn:captcha:FtnCjv2rD23H2rbGz2DB")
+	// logger.Dump(val)
 	// 解析 JSON 请求
 	// if err := c.ShouldBindJSON(&request); err != nil {
 	// 	// 解析失败，返回 422 状态码和错误信息
