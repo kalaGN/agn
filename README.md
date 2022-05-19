@@ -52,3 +52,11 @@ go run main.go make request project
 val := redis.Redis.Get("foo")
 logger.Dump(val)
 ```
+
+```
+go run main.go make migration add_users_table
+```
+
+```
+go run main.go migrate up
+```

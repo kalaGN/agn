@@ -2,7 +2,6 @@ package bootstrap
 
 import (
 	"agn/app/models/dial_record"
-	"agn/app/models/user"
 	"agn/pkg/config"
 	"agn/pkg/database"
 	"agn/pkg/logger"
@@ -52,7 +51,7 @@ func SetupDB() {
 	database.SQLDB.SetConnMaxLifetime(time.Duration(config.GetInt("database.mysql.max_life_seconds")) * time.Second)
 
 	// 自动创建表
-	database.DB.AutoMigrate(&user.User{})
+	//database.DB.AutoMigrate(&user.User{})
 	database.DB.AutoMigrate(&dial_record.Bd_dial_Record{})
 
 }

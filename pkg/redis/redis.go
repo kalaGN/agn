@@ -36,7 +36,6 @@ var Limitredis *RedisClient
 // ConnectRedis 连接 redis 数据库，设置全局的 Redis 对象
 func ConnecLimittRedis(address string, username string, password string, db int) {
 	limitonce.Do(func() {
-		logger.Dump("aa")
 		Limitredis = NewClient(address, username, password, db)
 	})
 }
