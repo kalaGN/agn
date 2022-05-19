@@ -20,10 +20,10 @@ func (sc *InterfacettController) IsDataExist(c *gin.Context) {
 	// 初始化请求对象
 	// 请求对象
 	// type PhoneExistRequest struct {
-	// 	Enterprise_id string `form:"comp_id"`
+	// 	Enterprise_id string `form:"comp_id"ź
 	// }
 	comp_id := c.Query("comp_id")
-
+	// redis.Limitredis.Get("aaa")
 	// 解析 JSON 请求
 	// if err := c.ShouldBindJSON(&request); err != nil {
 	// 	// 解析失败，返回 422 状态码和错误信息

@@ -16,4 +16,13 @@ func SetupRedis() {
 		config.GetString("redis.password"),
 		config.GetInt("redis.database"),
 	)
+
+	//
+	redis.ConnecLimittRedis(
+		fmt.Sprintf("%v:%v", config.GetString("limitredis.host"), config.GetString("limitredis.port")),
+		config.GetString("limitredis.username"),
+		config.GetString("limitredis.password"),
+		config.GetInt("limitredis.database"),
+	)
+
 }

@@ -29,6 +29,16 @@ func ConnectRedis(address string, username string, password string, db int) {
 	})
 }
 
+// Redis 全局 Redis，使用 db 1
+var Limitredis *RedisClient
+
+// ConnectRedis 连接 redis 数据库，设置全局的 Redis 对象
+func ConnecLimittRedis(address string, username string, password string, db int) {
+	once.Do(func() {
+		Limitredis = NewClient(address, username, password, db)
+	})
+}
+
 // NewClient 创建一个新的 redis 连接
 func NewClient(address string, username string, password string, db int) *RedisClient {
 
