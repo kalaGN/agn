@@ -185,3 +185,46 @@ func (migrator *Migrator) runUpMigration(mfile MigrationFile, batch int) {
 	err := migrator.DB.Create(&Migration{Migration: mfile.FileName, Batch: batch}).Error
 	console.ExitIf(err)
 }
+
+// Reset 回滚所有迁移
+func (migrator *Migrator) Reset() {
+
+	migrations := []Migration{}
+
+	// 按照倒序读取所有迁移文件
+	migrator.DB.Order("id DESC").Find(&migrations)
+
+	// 回滚所有迁移
+	if !migrator.rollbackMigrations(migrations) {
+		console.Success("[migrations] table is empty, nothing to reset.")
+	}
+}
+
+// Refresh 回滚所有迁移，并运行所有迁移
+func (migrator *Migrator) Refresh() {
+
+	// 回滚所有迁移
+	migrator.Reset()
+
+	// 再次执行所有迁移
+	migrator.Up()
+}
+
+// Fresh Drop 所有的表并重新运行所有迁移
+func (migrator *Migrator) Fresh() {
+
+	// 获取数据库名称，用以提示
+	dbname := database.CurrentDatabase()
+
+	// 删除所有表
+	err := database.DeleteAllTables()
+	console.ExitIf(err)
+	console.Success("clearup database " + dbname)
+
+	// 重新创建 migrates 表
+	migrator.createMigrationsTable()
+	console.Success("[migrations] table created.")
+
+	// 重新调用 up 命令
+	migrator.Up()
+}
