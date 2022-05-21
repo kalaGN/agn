@@ -40,10 +40,11 @@ go run main.go make apicontroller v1/User
 ```
 go run main.go make model User
 ```
+
 生成请求校验文件
 
 ```
-go run main.go make request user_req
+go run main.go make request User
 ```
 
 使用redis
