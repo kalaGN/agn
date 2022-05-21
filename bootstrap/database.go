@@ -1,7 +1,6 @@
 package bootstrap
 
 import (
-	"agn/app/models/dial_record"
 	"agn/pkg/config"
 	"agn/pkg/database"
 	"agn/pkg/logger"
@@ -52,6 +51,6 @@ func SetupDB() {
 
 	// 自动创建表
 	//database.DB.AutoMigrate(&user.User{})
-	database.DB.AutoMigrate(&dial_record.Bd_dial_Record{})
+	//database.DB.AutoMigrate(&dial_record.Bd_dial_Record{})
 
 }
