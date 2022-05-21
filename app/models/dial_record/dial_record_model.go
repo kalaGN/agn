@@ -3,7 +3,11 @@ package dial_record
 
 import (
 	"agn/app/models"
+	"agn/pkg/app"
 	"agn/pkg/database"
+	"agn/pkg/paginator"
+
+	"github.com/gin-gonic/gin"
 )
 
 /**
@@ -52,4 +56,16 @@ type Bd_dial_Record struct {
 func IsDataExist(enterprise_id string) (u []Bd_dial_Record) {
 	database.DB.Model(Bd_dial_Record{}).Where("enterprise_id = ?", enterprise_id).Find(&u)
 	return u
+}
+
+// Paginate 分页内容
+func Paginate(c *gin.Context, perPage int) (users []Bd_dial_Record, paging paginator.Paging) {
+	paging = paginator.Paginate(
+		c,
+		database.DB.Model(Bd_dial_Record{}),
+		&users,
+		app.V1URL(""),
+		perPage,
+	)
+	return
 }
