@@ -52,11 +52,24 @@ go run main.go make request User
 val := redis.Redis.Get("foo")
 logger.Dump(val)
 ```
-迁移命令
+迁移命令-新增
 ```
 go run main.go make migration add_users_table
 ```
+迁移命令-建表
 
 ```
 go run main.go migrate up
 ```
+
+缓存-清除 REDIS_CACHE_DB 对应redis db
+```
+go run main.go cache clear
+```
+
+
+缓存-清除单个key 比如 agn:cache:key1
+```
+go run main.go cache forget --key=key1
+```
+
