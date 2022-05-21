@@ -1,5 +1,5 @@
 # agn
-基于gin框架实现的自用api框架，学习自Gohub
+基于gin框架实现的api框架，学习自Gohub，不包含具体业务，可用于接口快速开发。
 
     路由
     数据库
@@ -9,18 +9,17 @@
     验证码
     日志和错误处理
     数据库迁移
-    数据填充（Faker）
     图片验证码
-    分页
-    授权策略
     请求验证（JSON、表单、URI Query 请求）
-    分页
     限流
 
-    缓存
 
+    数据填充（Faker）
+    缓存
+    分页
     图片上传
     图片裁切
+    授权策略
 
 
 ## 使用流程
@@ -44,7 +43,7 @@ go run main.go make model User
 生成请求校验文件
 
 ```
-go run main.go make request project
+go run main.go make request user_req
 ```
 
 使用redis
@@ -52,7 +51,7 @@ go run main.go make request project
 val := redis.Redis.Get("foo")
 logger.Dump(val)
 ```
-
+迁移命令
 ```
 go run main.go make migration add_users_table
 ```
