@@ -13,13 +13,13 @@ import (
 func init() {
 
 	// 添加 Seeder
-	seed.Add("SeedUsersTable", func(db *gorm.DB) {
+	seed.Add("SeedDialTable", func(db *gorm.DB) {
 
 		// 创建 10 个用户对象
-		users := factories.MakeUsers(10)
+		users := factories.MakeDials(10)
 
 		// 批量创建用户（注意批量创建不会调用模型钩子）
-		result := db.Table("user").Create(&users)
+		result := db.Table("bd_dial_record").Create(&users)
 
 		// 记录错误
 		if err := result.Error; err != nil {

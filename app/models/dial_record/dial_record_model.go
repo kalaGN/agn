@@ -30,12 +30,12 @@ import (
 type Bd_dial_Record struct {
 	models.BaseModel
 
-	Enterprise_id string `gorm:"type:int(11)"`
-	Manager_id    string `gorm:"type:varchar(64)"`
-	Task_identify string `gorm:"type:varchar(64)"`
-	Phone_id      string `gorm:"type:int(11);index:calledid_index"`
-	Phoneno       string `gorm:"type:varchar(64)"`
-	Dialresult    string `gorm:"type:int(11);unsigned`
+	Enterprise_id string `gorm:"type:int(11)" json:"enterprise_id"`
+	Manager_id    string `gorm:"type:varchar(64)" json:"manager_id"`
+	Task_identify string `gorm:"type:varchar(64)" json:"task_identify"`
+	Phone_id      string `gorm:"type:int(11);index:calledid_index" json:"phone_id"`
+	Phoneno       string `gorm:"type:varchar(64)" json:"PhoneNo"`
+	Dialresult    string `gorm:"type:int(11);unsigned"`
 	Desire        string `gorm:"type:varchar(64)"`
 	Dialtime      string `gorm:"type:datetime"`
 	Dialendtime   string `gorm:"type:datetime"`
