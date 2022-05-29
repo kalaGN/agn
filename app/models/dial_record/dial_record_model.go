@@ -43,12 +43,12 @@ type Bd_dial_Record struct {
 	Desire        string `gorm:"type:varchar(64)"`
 	Dialtime      string `gorm:"type:datetime"`
 	Dialendtime   string `gorm:"type:datetime"`
-	Talkbegintime string `gorm:"type:datetime"`
-	Talkendtime   string `gorm:"type:datetime"`
+	Talkbegintime string `gorm:"type:datetime" json:"TalkBeginTime"`
+	Talkendtime   string `gorm:"type:datetime" json:"TalkEndTime"`
 	Invokeid      string `gorm:"type:varchar(64)"`
 	Trunkgroupid  string `gorm:"type:int(11)"`
 	Dialtimes     string `gorm:"type:datetime"`
-	Ib_timestamp  string `gorm:"type:timestamp"`
+	Ib_timestamp  string `gorm:"type:timestamp" json:"ib_timestamp"`
 	Talktime      string `gorm:"type:int(11)"`
 }
 
@@ -60,9 +60,12 @@ func IsDataExist(enterprise_id string) (u []Bd_dial_Record) {
 
 // Paginate 分页内容
 func Paginate(c *gin.Context, perPage int) (users []Bd_dial_Record, paging paginator.Paging) {
+
+	comp_id := c.DefaultQuery("comp_id", "0")
+	task_identify := c.Query("task_identify")
 	paging = paginator.Paginate(
 		c,
-		database.DB.Model(Bd_dial_Record{}),
+		database.DB.Model(Bd_dial_Record{}).Select([]string{"task_identify", "DialResult", "PhoneNo", "DialTime", "InvokeId"}).Where("enterprise_id=?", comp_id).Where("task_identify=?", task_identify),
 		&users,
 		app.V1URL(""),
 		perPage,
