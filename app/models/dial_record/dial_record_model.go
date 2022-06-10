@@ -39,17 +39,17 @@ type Bd_dial_Record struct {
 	Task_identify string `gorm:"type:varchar(64)" json:"task_identify"`
 	Phone_id      string `gorm:"type:int(11);index:calledid_index" json:"phone_id"`
 	Phoneno       string `gorm:"type:varchar(64)" json:"PhoneNo"`
-	Dialresult    string `gorm:"type:int(11);unsigned"`
-	Desire        string `gorm:"type:varchar(64)"`
-	Dialtime      string `gorm:"type:datetime"`
-	Dialendtime   string `gorm:"type:datetime"`
+	Dialresult    string `gorm:"type:int(11);unsigned"  json:"DialResult"`
+	Desire        string `gorm:"type:varchar(64)" json:"desire"`
+	Dialtime      string `gorm:"type:datetime"  json:"DialTime"`
+	Dialendtime   string `gorm:"type:datetime"  json:"DialEndTime"`
 	Talkbegintime string `gorm:"type:datetime" json:"TalkBeginTime"`
 	Talkendtime   string `gorm:"type:datetime" json:"TalkEndTime"`
-	Invokeid      string `gorm:"type:varchar(64)"`
-	Trunkgroupid  string `gorm:"type:int(11)"`
-	Dialtimes     string `gorm:"type:datetime"`
+	Invokeid      string `gorm:"type:varchar(64)"  json:"InvokeId"`
+	Trunkgroupid  string `gorm:"type:int(11)"  json:"TrunkGroupId"`
+	Dialtimes     string `gorm:"type:datetime"  json:"DialTimes"`
 	Ib_timestamp  string `gorm:"type:timestamp" json:"ib_timestamp"`
-	Talktime      string `gorm:"type:int(11)"`
+	Talktime      string `gorm:"type:int(11)"  json:"TalkTime"`
 }
 
 // IsPhoneExist 判断手机号已被注册
