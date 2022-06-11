@@ -32,7 +32,7 @@ type Bd_dial_Record struct {
 	Talktime      string `gorm:"type:int(11)"  json:"TalkTime"`
 }
 
-// IsPhoneExist 判断手机号已被注册
+// IsDataExist check data of cor exist
 func IsDataExist(enterprise_id string) (u []Bd_dial_Record) {
 	database.DB.Model(Bd_dial_Record{}).Where("enterprise_id = ?", enterprise_id).Find(&u)
 	return u
