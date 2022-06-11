@@ -18,7 +18,7 @@ func MakeDials(times int) []dial_record.Bd_dial_Record {
 	for i := 0; i < times; i++ {
 		model := dial_record.Bd_dial_Record{
 
-			Enterprise_id: "2",
+			Enterprise_id: "3",
 			Manager_id:    helpers.RandomNumber(8),
 			Task_identify: faker.CCNumber(),
 			Phone_id:      faker.CCNumber(),
